@@ -1,39 +1,65 @@
 package p1;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
-class student{
+class Student {
+	String name;
 	int sid;
-	String sname;
-	float fees;
-	public student(int sid, String sname, float fees) {
+	float sfees;
+	public Student(String name, int sid, float sfees) {
 		super();
+		this.name = name;
 		this.sid = sid;
-		this.sname = sname;
-		this.fees = fees;
+		this.sfees = sfees;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getSid() {
+		return sid;
+	}
+	public void setSid(int sid) {
+		this.sid = sid;
+	}
+	@Override
+	public String toString() {
+		return "Student [name=" + name + ", sid=" + sid + ", sfees=" + sfees
+				+ "]";
+	}
+	public float getSfees() {
+		return sfees;
+	}
+	public void setSfees(float sfees) {
+		this.sfees = sfees;
 	}
 	
 }
-public class StudentMain{
-	public static void main(String[] args) {
-		ArrayList<student> ob= new ArrayList<student>();
-		student sob=new student(1,"sudha",166.2f);
-		student sob1=new student(2,"pallu",177.2f);
-		student sob2=new student(3,"meghu",188.2f);
-		ob.add(sob);
-		ob.add(sob1);
-		ob.add(sob2);
-
-
-	Iterator<student>  sit=ob.iterator();
-	while(sit.hasNext()){
-		student s=sit.next();
-		System.out.println(s.sid+" "+s.sname+" "+s.fees);
-	}
-
+public class StudentMain {
 
 	
+	public static void main(String[] args) {
+		TreeMap<Integer,Student> ob=new TreeMap<Integer, Student>();
+		Student s1=new Student("sudha",12,134f);
+		Student s2=new Student("pavi",13 ,1344f);
+		Student s3=new Student("madhu",14,134f);
+		ob.put(1, s1);
+		ob.put(2, s2);
+		ob.put(3, s3);
+		System.out.println(ob);
+		for(Map.Entry<Integer,Student>m:ob.entrySet()){
+			int k=m.getKey();
+			Student b=m.getValue();
+			System.out.println(b.getName()+" "+b.getSid()+" "+b.getSfees());
+		}
+
+
+
+
 
 	}
 
